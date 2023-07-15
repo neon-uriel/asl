@@ -31,6 +31,7 @@ start
     if (old.isMenu == vars.MENU_ID && current.isMenu != vars.MENU_ID)
     {
         print("s");
+        vars.curStage = 1;
         vars.isStart = 1;
     }
     if (vars.isStart == 1 && old.isMenu == 10 && current.isMenu == 1)
@@ -64,7 +65,11 @@ split
         return true;
     }
 }
-
+update
+{
+    print("stage :" + current.stageLevel);
+    print("curStage: " + vars.curStage);
+}
 reset
 {
     vars.isStart = 0;
