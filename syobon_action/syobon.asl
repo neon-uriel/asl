@@ -11,7 +11,6 @@ init
     vars.MENU_ID = 100; // タイトル画面のID 100->title 1->play 10->load 2->end
     vars.isStart = 0;
     vars.curStage = 1; // 今のステージID
-    vars.curClrFlag = 0; // クリアのフラグ
 }
 startup
 {
@@ -34,7 +33,6 @@ start
         print("s");
         vars.curStage = 1;
         vars.isStart = 1;
-        vars.curClrFlag = 0;
     }
     if (vars.isStart == 1 && old.isMenu == 10 && current.isMenu == 1)
     {
@@ -62,7 +60,7 @@ split
         vars.curStage = 4;
         return true;
     }
-    if(current.stageLevel == 51 && vars.curClrFlag == 1) //4面自動スクロールのフラグ
+    if(current.stageLevel == 51 && current.clearFlag == 1) //4面自動スクロールのフラグ
     {
         return true;
     }
@@ -71,19 +69,9 @@ update
 {
     print("stage :" + current.stageLevel);
     print("curStage: " + vars.curStage);
-    print("curcleaFlag: " + current.clearFlag);
-    if(current.clearFlag == 1)
-    {
-        vars.curClrFlag = 1;
-    }
-    if(current.clearFlag == 0)
-    {
-        vars.curClrFlag = 0;
-    }
 }
 reset
 {
-    vars.curClrFlag = 0;
     vars.isStart = 0;
     return current.isMenu == vars.MENU_ID;
 }
