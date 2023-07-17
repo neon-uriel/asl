@@ -23,7 +23,6 @@ onStart
     // タイマー操作したい場所でTimerModelのメソッドを呼び出す
     if(current.isMenu == 10)
     {
-        print("ready");
         vars.timerModel.Pause();
     }
 }
